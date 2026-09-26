@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #08080a;
+    color: #f3f4f6;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom dark scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #272732;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff2a6d;
+}
+
+/* Equalizer bar keyframes */
+@keyframes eq-dance {
+  0%, 100% { height: 4px; }
+  50% { height: 24px; }
+}
+
+.animate-eq-1 { animation: eq-dance 0.8s ease-in-out infinite alternate; }
+.animate-eq-2 { animation: eq-dance 0.6s ease-in-out infinite alternate 0.2s; }
+.animate-eq-3 { animation: eq-dance 0.9s ease-in-out infinite alternate 0.4s; }
+.animate-eq-4 { animation: eq-dance 0.7s ease-in-out infinite alternate 0.1s; }
+
+/* ==========================================================================
+   NEW HOVER SUITE (Interactive tactile hover effects & glowing animations)
+   ========================================================================== */
+
+/* 1. Tactical Card Lift & Neon Glow on Hover */
+.hover-card-neon {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease, 
+              background-color 0.3s ease;
+}
+
+.hover-card-neon:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(255, 42, 109, 0.65) !important;
+  box-shadow: 0 16px 36px -10px rgba(255, 42, 109, 0.35),
+              0 0 20px -2px rgba(255, 42, 109, 0.25) !important;
+}
+
+/* 2. Shimmer / Sheen Sweep across interactive elements on hover */
+.hover-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-sheen::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -150%;
+  width: 200%;
+  height: 220%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 65%
+  );
+  transform: rotate(25deg);
+  transition: all 0.75s ease;
+  pointer-events: none;
+}
+
+.hover-sheen:hover::after {
+  left: 120%;
+}
+
+/* 3. Glowing Action Buttons on Hover */
+.hover-glow-pink {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-glow-pink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(255, 42, 109, 0.65), 0 8px 18px -4px rgba(255, 42, 109, 0.5);
+}
+
+.hover-glow-pink:active {
+  transform: translateY(0);
+}
+
+/* 4. Danger / Logout Button Glow on Hover */
+.hover-glow-logout {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-glow-logout:hover {
+  transform: translateY(-1.5px);
+  background-color: rgba(244, 63, 94, 0.18) !important;
+  border-color: rgba(244, 63, 94, 0.6) !important;
+  color: #fb7185 !important;
+  box-shadow: 0 0 18px rgba(244, 63, 94, 0.45);
+}
+
+.hover-glow-logout:active {
+  transform: translateY(0);
+}
+
+/* 5. Smooth High-Precision Image Zoom on Hover */
+.hover-zoom-img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.group:hover .hover-zoom-img {
+  transform: scale(1.08);
+  filter: contrast(1.05) saturate(1.1);
+}
+
+/* 6. Glowing Circular Play Button on Hover */
+.hover-play-pulse {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .hover-play-pulse {
+  transform: scale(1.15);
+  box-shadow: 0 0 24px rgba(255, 42, 109, 0.8), 0 0 6px #fff;
+}
+
+/* 7. Neon Text Shimmer on Hover */
+.hover-text-glow {
+  transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+
+.hover-text-glow:hover {
+  text-shadow: 0 0 12px rgba(255, 42, 109, 0.7), 0 0 24px rgba(255, 42, 109, 0.4);
+}

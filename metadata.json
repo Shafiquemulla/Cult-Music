@@ -1,0 +1,6 @@
+{
+  "name": "CULTMUSIC - Music, People, Culture",
+  "description": "Connecting artists, events and communities to build a stronger music culture with live booking, AI showreel visualizers, real-time analytics, and secure JWT/MFA authentication.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
