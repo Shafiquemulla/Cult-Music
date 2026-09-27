@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, MapPin, ArrowRight, Clock, Users, Ticket } from 'lucide-react';
 import { EventItem } from '../types';
+import { fetchEvents } from '../services/api';
 
 interface EventsProps {
   events: EventItem[];
@@ -9,15 +10,45 @@ interface EventsProps {
   onNavigate?: (tab: string) => void;
 }
 
-export const Events: React.FC<EventsProps> = ({ events, onSelectEvent, onNavigate }) => {
+export const Events: React.FC<EventsProps> = ({ events: initialEvents = [], onSelectEvent, onNavigate }) => {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState('ALL');
+  const [eventsList, setEventsList] = useState<EventItem[]>(initialEvents);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+    fetchEvents(activeCategory)
+      .then((data) => {
+        if (isMounted && Array.isArray(data)) {
+          setEventsList(data);
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to fetch events:', err);
+      })
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [activeCategory]);
+
+  useEffect(() => {
+    if (initialEvents.length > 0 && eventsList.length === 0) {
+      setEventsList(initialEvents);
+    }
+  }, [initialEvents]);
 
   const categories = ['ALL', 'COMPETITION', 'RIDE SESSION', 'SHOWCASE', 'WORKSHOP'];
 
-  const filteredEvents = events.filter((evt) => {
+  const currentDisplayEvents = eventsList.length > 0 ? eventsList : initialEvents;
+  const filteredEvents = currentDisplayEvents.filter((evt) => {
     if (activeCategory === 'ALL') return true;
-    return evt.category.toUpperCase() === activeCategory;
+    return evt.category && evt.category.toUpperCase() === activeCategory;
   });
 
   const handleEventClick = (evt: EventItem) => {

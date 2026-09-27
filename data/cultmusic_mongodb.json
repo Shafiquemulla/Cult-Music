@@ -1,0 +1,816 @@
+{
+  "artists": [
+    {
+      "id": "pravin-habib",
+      "name": "Pravin Habib",
+      "role": "BMX Rider | Artist | Community Builder",
+      "badge": "RIDE CREATE INSPIRE",
+      "genres": [
+        "BMX",
+        "COLLECTIVE",
+        "STREET CULTURE"
+      ],
+      "category": "BMX",
+      "location": "Mumbai, India",
+      "image": "/src/assets/images/artist_pravin_bmx_1790433619103.jpg",
+      "featured": true,
+      "bio": "Pravin Habib is a professional BMX rider known for his unique style and contribution to the global BMX and music culture. He continues to inspire through his performances, events, and community work across Asia and Europe.",
+      "quote": "It's not just a sport, it's a culture. It's how we live, connect and inspire.",
+      "stats": {
+        "shows": 120,
+        "communityMembers": "45K+",
+        "reach": "2.4M"
+      },
+      "socials": {
+        "instagram": "@pravinbmx",
+        "youtube": "PravinHabibOfficial",
+        "x": "@pravinbmx"
+      },
+      "tracks": [
+        {
+          "title": "Asphalt Odyssey (Theme)",
+          "duration": "3:45",
+          "bpm": "128"
+        },
+        {
+          "title": "Concrete Echoes",
+          "duration": "4:12",
+          "bpm": "140"
+        }
+      ]
+    },
+    {
+      "id": "aarav",
+      "name": "Aarav",
+      "role": "DJ / Music Producer",
+      "badge": "SOUND EXPLORER",
+      "genres": [
+        "ELECTRONIC",
+        "HIP HOP"
+      ],
+      "category": "ELECTRONIC",
+      "location": "Pune / Goa, India",
+      "image": "/src/assets/images/artist_aarav_dj_1790433631781.jpg",
+      "featured": true,
+      "bio": "Aarav is a pioneer in blending Indian classical textures with deep underground modular electronic beats. Headlining warehouse jams from Berlin to Mumbai.",
+      "quote": "Sound is the invisible architecture that unites strangers in a shared rhythm.",
+      "stats": {
+        "shows": 85,
+        "communityMembers": "82K+",
+        "reach": "5.1M"
+      },
+      "socials": {
+        "instagram": "@aaravmusic",
+        "youtube": "AaravSounds",
+        "spotify": "Aarav"
+      },
+      "tracks": [
+        {
+          "title": "Midnight Ragas in Cyberpunk",
+          "duration": "5:20",
+          "bpm": "124"
+        },
+        {
+          "title": "Sub-Bass Monsoons",
+          "duration": "4:05",
+          "bpm": "130"
+        }
+      ]
+    },
+    {
+      "id": "kaira",
+      "name": "Kaira",
+      "role": "Indie Vocalist & Songwriter",
+      "badge": "VOCAL SOUL",
+      "genres": [
+        "INDIE",
+        "POP",
+        "ROCK"
+      ],
+      "category": "INDIE",
+      "location": "Bangalore, India",
+      "image": "/src/assets/images/artist_kaira_singer_1790433642746.jpg",
+      "featured": true,
+      "bio": "Known for poignant lyricism and raw acoustic soul, Kaira bridges intimate bedroom-pop sentiments with arena-scale melodic crescendos.",
+      "quote": "Every song is a confession you make out loud to thousands of friends.",
+      "stats": {
+        "shows": 64,
+        "communityMembers": "110K+",
+        "reach": "6.8M"
+      },
+      "socials": {
+        "instagram": "@kairasings",
+        "spotify": "Kaira",
+        "youtube": "KairaOfficial"
+      },
+      "tracks": [
+        {
+          "title": "Echoes in the Rain",
+          "duration": "3:30",
+          "bpm": "95"
+        },
+        {
+          "title": "Neon Horizon",
+          "duration": "4:15",
+          "bpm": "110"
+        }
+      ]
+    },
+    {
+      "id": "the-urban-crew",
+      "name": "The Urban Crew",
+      "role": "Dance & Street Collective",
+      "badge": "MOVEMENT CULTURE",
+      "genres": [
+        "COLLECTIVE",
+        "HIP HOP"
+      ],
+      "category": "COLLECTIVE",
+      "location": "Mumbai, India",
+      "image": "/src/assets/images/hiphop_dance_crew_1790435431981.jpg",
+      "featured": true,
+      "bio": "12-member battle-tested dance collective fusing krump, b-boying, and contemporary folk street movements. Redefining underground dance battles.",
+      "quote": "The street is our canvas, the asphalt is our stage.",
+      "stats": {
+        "shows": 200,
+        "communityMembers": "95K+",
+        "reach": "8.2M"
+      },
+      "socials": {
+        "instagram": "@theurbancrew",
+        "youtube": "UrbanCrewIndia"
+      },
+      "tracks": [
+        {
+          "title": "Battle Cry Cipher",
+          "duration": "3:18",
+          "bpm": "105"
+        }
+      ]
+    },
+    {
+      "id": "rhythm-soul",
+      "name": "Rhythm Soul",
+      "role": "Neo-Fusion 5-Piece Band",
+      "badge": "LIVE ENSEMBLE",
+      "genres": [
+        "ROCK",
+        "INDIE"
+      ],
+      "category": "ROCK",
+      "location": "Delhi, India",
+      "image": "/src/assets/images/cultmusic_hero_crowd_1790433606263.jpg",
+      "featured": false,
+      "bio": "A high-energy five-piece powerhouse marrying psychedelic guitars with heavy groove drums and expressive Hindustani vocal runs.",
+      "quote": "Live instrumentation has a heartbeat no machine can replicate.",
+      "stats": {
+        "shows": 110,
+        "communityMembers": "50K+",
+        "reach": "3.1M"
+      },
+      "socials": {
+        "instagram": "@rhythmsoulband"
+      },
+      "tracks": [
+        {
+          "title": "Storm Over Yamuna",
+          "duration": "6:10",
+          "bpm": "118"
+        }
+      ]
+    },
+    {
+      "id": "mc-vibe",
+      "name": "MC Vibe",
+      "role": "Hip Hop Lyricist",
+      "badge": "GULLY LYRICISM",
+      "genres": [
+        "HIP HOP"
+      ],
+      "category": "HIP HOP",
+      "location": "Mumbai, India",
+      "image": "/src/assets/images/artist_aarav_dj_1790433631781.jpg",
+      "featured": false,
+      "bio": "Street poet chronicling the grit, resilience, and ambition of Mumbai’s underground cipher scene in bilingual Hindi and English bars.",
+      "quote": "Words can build bridges or burn borders. I use mine to ignite minds.",
+      "stats": {
+        "shows": 92,
+        "communityMembers": "140K+",
+        "reach": "9.4M"
+      },
+      "socials": {
+        "instagram": "@mcvibeofficial"
+      },
+      "tracks": [
+        {
+          "title": "Gully Chronicle Vol. 1",
+          "duration": "3:05",
+          "bpm": "90"
+        }
+      ]
+    },
+    {
+      "id": "luna",
+      "name": "Luna",
+      "role": "Synthwave & Dream Pop Singer",
+      "badge": "DREAMWAVE",
+      "genres": [
+        "POP",
+        "ELECTRONIC"
+      ],
+      "category": "POP",
+      "location": "Kolkata, India",
+      "image": "/src/assets/images/artist_kaira_singer_1790433642746.jpg",
+      "featured": false,
+      "bio": "Ethereal vocals floating over retro 80s analog synthesizers and tape-saturated drum machines.",
+      "quote": "Dreaming with your eyes open while the synthesizer reverberates.",
+      "stats": {
+        "shows": 48,
+        "communityMembers": "38K+",
+        "reach": "1.9M"
+      },
+      "socials": {
+        "instagram": "@lunasounds"
+      },
+      "tracks": [
+        {
+          "title": "Starlight Avenue",
+          "duration": "3:55",
+          "bpm": "116"
+        }
+      ]
+    },
+    {
+      "id": "beat-nomads",
+      "name": "Beat Nomads",
+      "role": "B2B Underground DJ Crew",
+      "badge": "SOUND WANDERERS",
+      "genres": [
+        "ELECTRONIC",
+        "COLLECTIVE"
+      ],
+      "category": "ELECTRONIC",
+      "location": "Hyderabad / Pune",
+      "image": "/src/assets/images/artist_aarav_dj_1790433631781.jpg",
+      "featured": false,
+      "bio": "Travelling record diggers and sound designers curating all-night warehouse sessions featuring rare global bass, afrobeat, and dark techno.",
+      "quote": "Never stick to one tempo. Life is polyrhythmic.",
+      "stats": {
+        "shows": 75,
+        "communityMembers": "30K+",
+        "reach": "1.5M"
+      },
+      "socials": {
+        "instagram": "@beatnomads"
+      },
+      "tracks": [
+        {
+          "title": "Nomadic Frequency",
+          "duration": "6:45",
+          "bpm": "126"
+        }
+      ]
+    },
+    {
+      "id": "krew-91",
+      "name": "Krew 91",
+      "role": "BMX & Action Sports Syndicate",
+      "badge": "STREET REVOLUTION",
+      "genres": [
+        "BMX",
+        "COLLECTIVE"
+      ],
+      "category": "BMX",
+      "location": "Mumbai & Pune",
+      "image": "/src/assets/images/bmx_stunt_rider_1790435388365.jpg",
+      "featured": false,
+      "bio": "Pioneering extreme sports collective taking youth off mobile screens and onto rails, halfpipes, and community jam sessions.",
+      "quote": "Gravity is just a suggestion when the music is loud enough.",
+      "stats": {
+        "shows": 80,
+        "communityMembers": "60K+",
+        "reach": "4.8M"
+      },
+      "socials": {
+        "instagram": "@krew91bmx"
+      },
+      "tracks": [
+        {
+          "title": "Halfpipe Anthem",
+          "duration": "3:12",
+          "bpm": "135"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "bmx-freestyle-jam",
+      "title": "BMX Freestyle Jam",
+      "date": "12 OCT 2024",
+      "day": "12",
+      "month": "OCT",
+      "year": "2024",
+      "time": "4:00 PM - 10:00 PM",
+      "location": "Mumbai, India",
+      "venue": "Bandra Amphitheatre & Skate Park, Mumbai",
+      "category": "RIDE SESSION",
+      "type": "Competition & Jam",
+      "image": "/src/assets/images/event_freestyle_jam_1790433655462.jpg",
+      "featured": true,
+      "price": "Free Entry with RSVP",
+      "capacity": 1200,
+      "registeredCount": 842,
+      "description": "Join us for an adrenaline-filled BMX Freestyle Jam featuring some of the best riders, live music DJs, and an amazing community vibe. A true celebration of sport, art and street culture.",
+      "schedule": [
+        {
+          "time": "4:00 PM",
+          "activity": "Rider Check-in & Open Practice"
+        },
+        {
+          "time": "5:30 PM",
+          "activity": "Amateur Freestyle Jam (Live DJ Aarav Set)"
+        },
+        {
+          "time": "7:00 PM",
+          "activity": "Pro High-Air & Best Trick Contest"
+        },
+        {
+          "time": "8:30 PM",
+          "activity": "Live Rap Battle & MC Vibe Performance"
+        },
+        {
+          "time": "9:30 PM",
+          "activity": "Awards & After-Hours Community Cipher"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is helmet mandatory for riders?",
+          "a": "Yes! All participants taking on ramps must wear helmets and protective pads."
+        },
+        {
+          "q": "Can non-riders attend?",
+          "a": "Absolutely! The event has open spectator seating, food popups, live music, and art stalls."
+        }
+      ]
+    },
+    {
+      "id": "urban-music-night",
+      "title": "Urban Music Night",
+      "date": "25 OCT 2024",
+      "day": "25",
+      "month": "OCT",
+      "year": "2024",
+      "time": "7:00 PM - 1:00 AM",
+      "location": "Pune, India",
+      "venue": "The Mills Warehouse, Sangamwadi, Pune",
+      "category": "SHOWCASE",
+      "type": "Live Gig & Electronic Showcase",
+      "image": "/src/assets/images/cultmusic_hero_crowd_1790433606263.jpg",
+      "featured": true,
+      "price": "₹499 Early Bird",
+      "capacity": 800,
+      "registeredCount": 690,
+      "description": "An immersive audio-visual showcase featuring cutting-edge electronic beats, synthwave melodies, and live beatboxers in an industrial warehouse setting.",
+      "schedule": [
+        {
+          "time": "7:00 PM",
+          "activity": "Doors Open & Ambient Soundscape"
+        },
+        {
+          "time": "8:30 PM",
+          "activity": "Luna - Live Synthwave Set"
+        },
+        {
+          "time": "10:00 PM",
+          "activity": "Aarav B2B Beat Nomads"
+        },
+        {
+          "time": "12:00 AM",
+          "activity": "Underground After-Hours Session"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is there an age limit?",
+          "a": "This showcase is 18+ only."
+        }
+      ]
+    },
+    {
+      "id": "cultmusic-fest",
+      "title": "Cultmusic Fest 2024",
+      "date": "10 NOV 2024",
+      "day": "10",
+      "month": "NOV",
+      "year": "2024",
+      "time": "12:00 PM - 11:00 PM",
+      "location": "Bangalore, India",
+      "venue": "Jaymahal Palace Grounds, Bengaluru",
+      "category": "SHOWCASE",
+      "type": "Multi-Stage Music & Culture Festival",
+      "image": "/src/assets/images/cultmusic_hero_crowd_1790433606263.jpg",
+      "featured": true,
+      "price": "₹1,299 General Admission",
+      "capacity": 5000,
+      "registeredCount": 3820,
+      "description": "The flagship annual festival uniting 30+ independent artists, 3 stages, live extreme sports showcases, graffiti battles, and gourmet street food.",
+      "schedule": [
+        {
+          "time": "12:00 PM",
+          "activity": "Festival Gates & Flea Village Open"
+        },
+        {
+          "time": "2:30 PM",
+          "activity": "Indie Stage - Acoustic Showcases"
+        },
+        {
+          "time": "5:00 PM",
+          "activity": "Main Stage - Kaira & Rhythm Soul"
+        },
+        {
+          "time": "8:00 PM",
+          "activity": "Action Arena - BMX & Street Dance Finals"
+        },
+        {
+          "time": "9:30 PM",
+          "activity": "Headline Set - MC Vibe & Surprise International Guest"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Are parking spots available?",
+          "a": "Dedicated festival parking is available on a first-come, first-served basis."
+        }
+      ]
+    },
+    {
+      "id": "bmx-workshop",
+      "title": "BMX Beginner & Pro Workshop",
+      "date": "22 NOV 2024",
+      "day": "22",
+      "month": "NOV",
+      "year": "2024",
+      "time": "9:00 AM - 1:00 PM",
+      "location": "Delhi, India",
+      "venue": "Yamuna Sports Complex Skate Arena, Delhi",
+      "category": "WORKSHOP",
+      "type": "Masterclass & Coaching",
+      "image": "/src/assets/images/artist_pravin_bmx_1790433619103.jpg",
+      "featured": false,
+      "price": "₹750 (Equipment Provided)",
+      "capacity": 50,
+      "registeredCount": 42,
+      "description": "Hands-on clinic guided by Pravin Habib and Krew 91 riders teaching balance, bunny hops, manual control, ramp transition, and bike maintenance.",
+      "schedule": [
+        {
+          "time": "9:00 AM",
+          "activity": "Safety Briefing & Bike Tuning"
+        },
+        {
+          "time": "10:00 AM",
+          "activity": "Flatland Basics & Balance"
+        },
+        {
+          "time": "11:30 AM",
+          "activity": "Ramp Drop-ins & Hop Drills"
+        }
+      ],
+      "faqs": []
+    },
+    {
+      "id": "indie-sounds-live",
+      "title": "Indie Sounds Live",
+      "date": "05 DEC 2024",
+      "day": "05",
+      "month": "DEC",
+      "year": "2024",
+      "time": "6:30 PM - 10:30 PM",
+      "location": "Mumbai, India",
+      "venue": "AntiSocial Lower Parel, Mumbai",
+      "category": "SHOWCASE",
+      "type": "Live Club Gig",
+      "image": "/src/assets/images/artist_kaira_singer_1790433642746.jpg",
+      "featured": false,
+      "price": "₹600",
+      "capacity": 400,
+      "registeredCount": 310,
+      "description": "A cozy evening of soul-stirring ballads, indie rock anthems, and intimate acoustic dialogues with Kaira and special guest singer-songwriters.",
+      "schedule": [],
+      "faqs": []
+    },
+    {
+      "id": "community-ride",
+      "title": "Midnight Community City Ride",
+      "date": "18 DEC 2024",
+      "day": "18",
+      "month": "DEC",
+      "year": "2024",
+      "time": "10:00 PM - 2:00 AM",
+      "location": "Pune, India",
+      "venue": "JM Road starting point, Pune",
+      "category": "RIDE SESSION",
+      "type": "Open Ride Session",
+      "image": "/src/assets/images/event_freestyle_jam_1790433655462.jpg",
+      "featured": false,
+      "price": "Free RSVP",
+      "capacity": 600,
+      "registeredCount": 485,
+      "description": "A nocturnal pedal-powered tour through historic streets and lit avenues of Pune, punctuated by music buskers and chai stops.",
+      "schedule": [],
+      "faqs": []
+    }
+  ],
+  "blogs": [
+    {
+      "id": "rise-of-independent-artists-in-india",
+      "slug": "rise-of-independent-artists-in-india",
+      "title": "The Rise of Independent Artists in India",
+      "subtitle": "How streaming, community culture, and grassroots events are breaking Bollywood's traditional monopoly.",
+      "date": "Sep 12, 2024",
+      "category": "MUSIC",
+      "readTime": "5 min read",
+      "author": "Cultmusic Editorial",
+      "image": "/src/assets/images/cultmusic_hero_crowd_1790433606263.jpg",
+      "sections": [
+        {
+          "heading": "Why Independent Artists Matter",
+          "paragraphs": [
+            "India's independent music scene is growing like never before. With digital platforms, social media, and live events, independent artists are breaking barriers and reaching global audiences.",
+            "Independent artists bring fresh perspectives, unique sounds, and authentic stories. They are shaping the future of music by staying true to their creativity rather than fitting into commercial formula templates."
+          ]
+        },
+        {
+          "quote": "Independent music is not just a genre; it is a movement of cultural sovereignty."
+        },
+        {
+          "heading": "The Road Ahead",
+          "paragraphs": [
+            "With more opportunities, collaborations, and platforms like Cultmusic, the future looks brighter for independent artists across the subcontinent.",
+            "From underground hip hop ciphers in Mumbai alleys to synth-wave producers in Kolkata, the cultural canvas is exploding with raw vitality."
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "id": "c1",
+          "name": "Rohan Sharma",
+          "text": "Independent music is saving the soul of Indian music! Great piece.",
+          "date": "Sep 13, 2024"
+        }
+      ]
+    },
+    {
+      "id": "how-live-events-are-shaping-music-culture",
+      "slug": "how-live-events-are-shaping-music-culture",
+      "title": "How Live Events are Shaping Music Culture",
+      "subtitle": "From underground skate warehouses to open amphitheaters: the rebirth of physical togetherness.",
+      "date": "Sep 01, 2024",
+      "category": "EVENTS",
+      "readTime": "4 min read",
+      "author": "Arjun Das",
+      "image": "/src/assets/images/event_freestyle_jam_1790433655462.jpg",
+      "sections": [
+        {
+          "heading": "Beyond Just Sound",
+          "paragraphs": [
+            "Live music is no longer just standing and listening. It is an immersive sensory environment where action sports, street muralists, and culinary creators intersect.",
+            "When a BMX rider lands a 360 barspin just as the bass drops, the energy is unforgettable."
+          ]
+        }
+      ],
+      "comments": []
+    },
+    {
+      "id": "bmx-and-music-shared-culture",
+      "slug": "bmx-and-music-shared-culture",
+      "title": "BMX and Music: A Shared Culture",
+      "subtitle": "Rhythm on two wheels and the auditory DNA of extreme street athletes.",
+      "date": "Aug 28, 2024",
+      "category": "CULTURE",
+      "readTime": "6 min read",
+      "author": "Pravin Habib",
+      "image": "/src/assets/images/artist_pravin_bmx_1790433619103.jpg",
+      "sections": [
+        {
+          "heading": "Flow State & Audio Waves",
+          "paragraphs": [
+            "Every line on a BMX bike has rhythm. You pump transitions on the quarter pipe the same way a drummer hits downbeats.",
+            "Music is what riders plug in right before dropping in on a high-stakes trick to drown out fear and find absolute focus."
+          ]
+        }
+      ],
+      "comments": []
+    },
+    {
+      "id": "building-stronger-artist-communities",
+      "slug": "building-stronger-artist-communities",
+      "title": "Building Stronger Artist Communities",
+      "subtitle": "Why fair splits, mentorship circles, and co-creation spaces beat hyper-competition.",
+      "date": "Aug 21, 2024",
+      "category": "CULTURE",
+      "readTime": "4 min read",
+      "author": "Cultmusic Team",
+      "image": "/src/assets/images/artist_kaira_singer_1790433642746.jpg",
+      "sections": [
+        {
+          "heading": "Collective Power",
+          "paragraphs": [
+            "No artist rises alone. By pairing emerging vocalists with seasoned producers and stage designers, we create a thriving ecosystem that sustains artists over long careers."
+          ]
+        }
+      ],
+      "comments": []
+    },
+    {
+      "id": "future-of-live-music-in-india",
+      "slug": "future-of-live-music-in-india",
+      "title": "The Future of Live Music in India",
+      "subtitle": "Sound engineering breakthroughs, eco-friendly festivals, and hybrid digital touring.",
+      "date": "Aug 12, 2024",
+      "category": "MUSIC",
+      "readTime": "5 min read",
+      "author": "Aarav Mehta",
+      "image": "/src/assets/images/artist_aarav_dj_1790433631781.jpg",
+      "sections": [
+        {
+          "heading": "Next-Gen Festivals",
+          "paragraphs": [
+            "Intelligent acoustic dampening, modular mobile stages, and real-time streaming allow fans in tier-2 cities to experience festival sound with zero latency."
+          ]
+        }
+      ],
+      "comments": []
+    },
+    {
+      "id": "behind-the-scenes-cultmusic-fest",
+      "slug": "behind-the-scenes-cultmusic-fest",
+      "title": "Behind the Scenes: CULTMUSIC Fest",
+      "subtitle": "90 days of scaffolding, ramp builds, stage lighting rigging, and artist rehearsals.",
+      "date": "Aug 05, 2024",
+      "category": "LIFESTYLE",
+      "readTime": "7 min read",
+      "author": "Production Crew",
+      "image": "/src/assets/images/cultmusic_hero_crowd_1790433606263.jpg",
+      "sections": [
+        {
+          "heading": "Engineering the Vibe",
+          "paragraphs": [
+            "Over 400 workers, 12 audio engineers, and 30 safety marshals worked round the clock to build a sanctuary for 5,000 music and street culture lovers."
+          ]
+        }
+      ],
+      "comments": []
+    }
+  ],
+  "services": [
+    {
+      "id": "talent-management",
+      "title": "TALENT MANAGEMENT",
+      "description": "We nurture, guide and manage emerging and established talent, helping them grow their brand, reach new audiences and unlock global opportunities.",
+      "bullets": [
+        "Career Strategy & Brand Architecture",
+        "Bookings & Multi-Territory Collaborations",
+        "Media & PR Support & Press Placement",
+        "Global Tour Planning & Festival Placement",
+        "Publishing, Sync & Royalty Management"
+      ]
+    },
+    {
+      "id": "live-music-management",
+      "title": "LIVE MUSIC MANAGEMENT",
+      "description": "From concept to execution, we handle live events, tours and performances that create unforgettable experiences for fans and brands alike.",
+      "bullets": [
+        "Concerts & Arena Tours",
+        "Music Festivals & Multi-Discipline Stages",
+        "College & Corporate Show Curation",
+        "Artist Curation & Lineup Programming",
+        "End-to-End Sound, Light & Stage Production"
+      ]
+    },
+    {
+      "id": "artist-community",
+      "title": "ARTIST COMMUNITY & WORKSHOPS",
+      "description": "Providing a collaborative hub where vocalists, beatmakers, choreographers, and extreme sports riders share studio time and masterclasses.",
+      "bullets": [
+        "Monthly Masterclasses & Audio Ciphers",
+        "Studio Gear Access & Rehearsal Spaces",
+        "Peer Mentorship & Legal Advisory"
+      ]
+    },
+    {
+      "id": "events-experiences",
+      "title": "EVENTS & EXPERIENCES",
+      "description": "Transforming industrial urban spaces into living cultural landmarks with experiential activations, extreme sports ramp shows, and brand tie-ins.",
+      "bullets": [
+        "Pop-up Warehouse Raves",
+        "BMX Skatepark Freestyle Showcases",
+        "Immersive Visual Art & Audio Installations"
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "u_admin",
+      "name": "Admin Director",
+      "email": "admin@cultmusic.com",
+      "passwordHash": "admin123",
+      "role": "admin",
+      "mfaEnabled": true,
+      "mfaSecret": "839210",
+      "avatar": "/src/assets/images/artist_aarav_dj_1790433631781.jpg"
+    },
+    {
+      "id": "u_listener",
+      "name": "Shafique Mulla",
+      "email": "shafiquemulla8@gmail.com",
+      "passwordHash": "cultmusic2026",
+      "role": "listener",
+      "mfaEnabled": false,
+      "mfaSecret": "123456",
+      "avatar": "/src/assets/images/artist_kaira_singer_1790433642746.jpg"
+    },
+    {
+      "id": "u_1790522638049",
+      "name": "Alex Rivers",
+      "email": "alex.rivers@cultmusic.com",
+      "password": "$2b$10$1AuJG3FmD.iQ79i5jnk9kO8DIYjN9O2MR3sd4yKq0PY5zeHOZqNxC",
+      "role": "user",
+      "createdAt": "2026-09-27T15:23:58.049Z",
+      "updatedAt": "2026-09-27T15:23:58.049Z"
+    },
+    {
+      "id": "u_1790523021130",
+      "name": "System Admin",
+      "email": "admin.test@cultmusic.com",
+      "password": "$2b$10$P/5iHB.dfcixE2TgIrpEZu6oYUsAE2Wc896sVE/.xMdk9GErW3YMm",
+      "role": "admin",
+      "createdAt": "2026-09-27T15:30:21.130Z",
+      "updatedAt": "2026-09-27T15:30:21.130Z"
+    },
+    {
+      "id": "u_1790523027922",
+      "name": "Regular Listener",
+      "email": "listener.test@cultmusic.com",
+      "password": "$2b$10$noXnPois8LRtYD6fstUyeOt1jxd6mDk3/djQ2RpIlE.HM6mpX5ccO",
+      "role": "user",
+      "createdAt": "2026-09-27T15:30:27.922Z",
+      "updatedAt": "2026-09-27T15:30:27.922Z"
+    },
+    {
+      "id": "u_1790523089054",
+      "name": "Elena Vance",
+      "email": "elena.vance@cultmusic.com",
+      "password": "$2b$10$fwKhVqx7djnW4QVKquoRcOXFnj/bgION30R2jKTFLH/GAq108YK1G",
+      "role": "user",
+      "createdAt": "2026-09-27T15:31:29.054Z",
+      "updatedAt": "2026-09-27T15:31:29.054Z"
+    }
+  ],
+  "registrations": [
+    {
+      "id": "reg_1790523793566",
+      "eventId": "evt_1790523784470",
+      "eventTitle": "Subterranean Bass Summit",
+      "userName": "Shafique Mulla",
+      "userEmail": "shafiquemulla8@gmail.com",
+      "tier": "VIP Backstage RSVP",
+      "timestamp": "2026-09-27T15:43:13.566Z"
+    },
+    {
+      "id": "reg_101",
+      "eventId": "bmx-freestyle-jam",
+      "eventTitle": "BMX Freestyle Jam",
+      "userName": "Shafique Mulla",
+      "userEmail": "shafiquemulla8@gmail.com",
+      "tier": "General RSVP",
+      "timestamp": "2026-09-27T14:48:17.684Z"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "book_201",
+      "artistId": "pravin-habib",
+      "artistName": "Pravin Habib",
+      "clientName": "Red Bull Street Culture",
+      "email": "organizer@streetculture.org",
+      "date": "2024-11-15",
+      "location": "Mumbai Arena",
+      "budget": "₹2,50,000",
+      "details": "Keynote stunt showcase and community workshop",
+      "status": "confirmed"
+    }
+  ],
+  "contacts": [],
+  "analytics": {
+    "totalListeners": 48920,
+    "activeNow": 342,
+    "totalStreamMinutes": 842100,
+    "ticketSalesTotal": 1845000,
+    "eventRegistrations": 5890,
+    "artistInquiries": 124,
+    "liveStreamsViewers": 1280,
+    "uptimePercent": 99.98
+  }
+}

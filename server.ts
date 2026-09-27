@@ -6,13 +6,18 @@ import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
+import cors from 'cors';
+import connectDB, { mongoose } from './server/config/db';
+import authRouter from './server/routes/auth';
+import artistsRouter from './server/routes/artists';
+import eventsRouter, { setEventBroadcaster } from './server/routes/events';
+import { authenticateJWT } from './server/middleware/auth';
 
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const JWT_SECRET = process.env.JWT_SECRET || 'cultmusic_super_secure_jwt_secret_2026';
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
 // Data persistence directory
@@ -621,29 +626,26 @@ function broadcastRealtimeUpdate(type: string, data: any) {
   });
 }
 
-// JWT Authentication Middleware
-function authenticateJWT(req: Request, res: Response, next: () => void) {
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'Unauthorized: Missing or invalid token' });
-  }
-
-  const token = authHeader.split(' ')[1];
-  try {
-    const decoded = jwt.verify(token, JWT_SECRET) as any;
-    (req as any).user = decoded;
-    next();
-  } catch (err) {
-    return res.status(403).json({ error: 'Forbidden: Invalid or expired token' });
-  }
-}
-
 // Gemini AI client initialization
 const ai = process.env.GEMINI_API_KEY ? new GoogleGenAI() : null;
 
 async function startServer() {
+  // Connect to MongoDB via Mongoose
+  await connectDB();
+
   const app = express();
+  app.use(cors());
   app.use(express.json());
+
+  // Mount Authentication Router (MongoDB + Mongoose + bcryptjs + JWT)
+  app.use('/api/auth', authRouter);
+
+  // Mount Artists Router (MongoDB + Mongoose + JWT + Admin role)
+  app.use('/api/artists', artistsRouter);
+
+  // Mount Events Router (MongoDB + Mongoose + JWT + Admin role + RSVP)
+  setEventBroadcaster(broadcastRealtimeUpdate);
+  app.use('/api/events', eventsRouter);
 
   // Real-Time Server-Sent Events (SSE) Stream
   app.get('/api/realtime/stream', (req: Request, res: Response) => {
@@ -666,10 +668,12 @@ async function startServer() {
 
   // Database status endpoint (Shows MongoDB integration status)
   app.get('/api/db/status', (req: Request, res: Response) => {
+    const isMongoConnected = mongoose.connection.readyState === 1;
     res.json({
-      database: 'MongoDB Compatible Real-Time Store',
-      status: 'connected',
-      uri: process.env.MONGODB_URI ? 'mongodb+srv://...[connected]' : 'mongodb://localhost:27017/cultmusic_db [active local replica]',
+      database: isMongoConnected ? 'MongoDB (Mongoose)' : 'MongoDB Compatible Real-Time Store',
+      status: isMongoConnected ? 'connected' : (process.env.MONGODB_URI ? 'connecting' : 'active local replica'),
+      mongooseReadyState: mongoose.connection.readyState,
+      uri: process.env.MONGODB_URI ? 'mongodb+srv://...[configured]' : 'mongodb://localhost:27017/cultmusic_db [active local replica]',
       collections: {
         artists: db.artists.length,
         events: db.events.length,
@@ -681,178 +685,6 @@ async function startServer() {
       },
       lastSync: new Date().toISOString()
     });
-  });
-
-  // AUTH: Register
-  app.post('/api/auth/register', (req: Request, res: Response) => {
-    const { name, email, password, enableMfa } = req.body;
-    if (!name || !email || !password) {
-      return res.status(400).json({ error: 'Name, email, and password are required' });
-    }
-
-    const existing = db.users.find((u: any) => u.email.toLowerCase() === email.toLowerCase());
-    if (existing) {
-      return res.status(409).json({ error: 'User already exists with this email' });
-    }
-
-    const mfaCode = '882244'; // Sample 6-digit MFA challenge code for new user
-    const newUser = {
-      id: 'u_' + Date.now(),
-      name,
-      email,
-      passwordHash: password,
-      role: 'listener',
-      mfaEnabled: Boolean(enableMfa),
-      mfaSecret: mfaCode,
-      avatar: '/src/assets/images/artist_pravin_bmx_1790433619103.jpg'
-    };
-
-    db.users.push(newUser);
-    saveDatabase();
-
-    const token = jwt.sign(
-      { id: newUser.id, name: newUser.name, email: newUser.email, role: newUser.role },
-      JWT_SECRET,
-      { expiresIn: '7d' }
-    );
-
-    broadcastRealtimeUpdate('user_joined', { name: newUser.name, count: db.users.length });
-
-    return res.status(201).json({
-      message: 'Account created successfully',
-      user: { id: newUser.id, name: newUser.name, email: newUser.email, role: newUser.role, mfaEnabled: newUser.mfaEnabled },
-      token
-    });
-  });
-
-  // AUTH: Login with Multi-Factor Authentication (MFA)
-  app.post('/api/auth/login', (req: Request, res: Response) => {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(400).json({ error: 'Email and password are required' });
-    }
-
-    const user = db.users.find((u: any) => u.email.toLowerCase() === email.toLowerCase());
-    if (!user || user.passwordHash !== password) {
-      return res.status(401).json({ error: 'Invalid email or password' });
-    }
-
-    // If user has MFA enabled, require MFA step
-    if (user.mfaEnabled) {
-      const tempToken = jwt.sign(
-        { id: user.id, tempMfa: true },
-        JWT_SECRET,
-        { expiresIn: '10m' }
-      );
-
-      return res.json({
-        requireMfa: true,
-        tempToken,
-        mfaHint: `Enter the 6-digit MFA verification code (Demo code: ${user.mfaSecret || '839210'})`
-      });
-    }
-
-    const token = jwt.sign(
-      { id: user.id, name: user.name, email: user.email, role: user.role },
-      JWT_SECRET,
-      { expiresIn: '7d' }
-    );
-
-    return res.json({
-      message: 'Logged in successfully',
-      user: { id: user.id, name: user.name, email: user.email, role: user.role, mfaEnabled: user.mfaEnabled },
-      token
-    });
-  });
-
-  // AUTH: Verify MFA
-  app.post('/api/auth/verify-mfa', (req: Request, res: Response) => {
-    const { tempToken, mfaCode } = req.body;
-    if (!tempToken || !mfaCode) {
-      return res.status(400).json({ error: 'Temporary token and MFA code are required' });
-    }
-
-    try {
-      const decoded = jwt.verify(tempToken, JWT_SECRET) as any;
-      if (!decoded.tempMfa) {
-        return res.status(400).json({ error: 'Invalid verification token' });
-      }
-
-      const user = db.users.find((u: any) => u.id === decoded.id);
-      if (!user) {
-        return res.status(404).json({ error: 'User not found' });
-      }
-
-      // Check code (or master demo code '839210' / '123456')
-      if (mfaCode !== user.mfaSecret && mfaCode !== '839210' && mfaCode !== '123456') {
-        return res.status(401).json({ error: 'Invalid 6-digit MFA security code. Please check your authenticator.' });
-      }
-
-      const token = jwt.sign(
-        { id: user.id, name: user.name, email: user.email, role: user.role },
-        JWT_SECRET,
-        { expiresIn: '7d' }
-      );
-
-      return res.json({
-        message: 'MFA Verified successfully',
-        user: { id: user.id, name: user.name, email: user.email, role: user.role, mfaEnabled: true },
-        token
-      });
-    } catch {
-      return res.status(403).json({ error: 'MFA session expired. Please log in again.' });
-    }
-  });
-
-  // AUTH: Get current profile
-  app.get('/api/auth/me', authenticateJWT, (req: Request, res: Response) => {
-    const userPayload = (req as any).user;
-    const user = db.users.find((u: any) => u.id === userPayload.id);
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-    return res.json({
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        mfaEnabled: user.mfaEnabled,
-        avatar: user.avatar
-      }
-    });
-  });
-
-  // ARTISTS API
-  app.get('/api/artists', (req: Request, res: Response) => {
-    const { category, search } = req.query;
-    let list = db.artists;
-
-    if (category && typeof category === 'string' && category !== 'ALL') {
-      list = list.filter((a: any) =>
-        a.category.toUpperCase() === category.toUpperCase() ||
-        a.genres.some((g: string) => g.toUpperCase() === category.toUpperCase())
-      );
-    }
-
-    if (search && typeof search === 'string') {
-      const q = search.toLowerCase();
-      list = list.filter((a: any) =>
-        a.name.toLowerCase().includes(q) ||
-        a.role.toLowerCase().includes(q) ||
-        a.location.toLowerCase().includes(q)
-      );
-    }
-
-    res.json({ artists: list });
-  });
-
-  app.get('/api/artists/:id', (req: Request, res: Response) => {
-    const artist = db.artists.find((a: any) => a.id === req.params.id);
-    if (!artist) {
-      return res.status(404).json({ error: 'Artist not found' });
-    }
-    res.json({ artist });
   });
 
   // ARTISTS: Booking Request
@@ -894,67 +726,6 @@ async function startServer() {
     res.status(201).json({
       message: `Booking inquiry submitted to ${artist.name} management! We will respond within 24 hours.`,
       booking
-    });
-  });
-
-  // EVENTS API
-  app.get('/api/events', (req: Request, res: Response) => {
-    const { category } = req.query;
-    let list = db.events;
-
-    if (category && typeof category === 'string' && category !== 'ALL') {
-      list = list.filter((e: any) => e.category.toUpperCase() === category.toUpperCase());
-    }
-
-    res.json({ events: list });
-  });
-
-  app.get('/api/events/:id', (req: Request, res: Response) => {
-    const event = db.events.find((e: any) => e.id === req.params.id);
-    if (!event) {
-      return res.status(404).json({ error: 'Event not found' });
-    }
-    res.json({ event });
-  });
-
-  // EVENTS: Register / RSVP
-  app.post('/api/events/:id/register', (req: Request, res: Response) => {
-    const event = db.events.find((e: any) => e.id === req.params.id);
-    if (!event) {
-      return res.status(404).json({ error: 'Event not found' });
-    }
-
-    const { userName, userEmail, tier } = req.body;
-    if (!userName || !userEmail) {
-      return res.status(400).json({ error: 'Name and email are required to register' });
-    }
-
-    const reg = {
-      id: 'reg_' + Date.now(),
-      eventId: event.id,
-      eventTitle: event.title,
-      userName,
-      userEmail,
-      tier: tier || 'Standard RSVP',
-      timestamp: new Date().toISOString()
-    };
-
-    db.registrations.unshift(reg);
-    event.registeredCount = (event.registeredCount || 0) + 1;
-    db.analytics.eventRegistrations += 1;
-    saveDatabase();
-
-    broadcastRealtimeUpdate('event_registration', {
-      eventId: event.id,
-      eventTitle: event.title,
-      registeredCount: event.registeredCount,
-      userName
-    });
-
-    res.status(201).json({
-      message: `Successfully registered for ${event.title}! Your pass has been generated.`,
-      registration: reg,
-      registeredCount: event.registeredCount
     });
   });
 

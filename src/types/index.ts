@@ -7,6 +7,7 @@ export interface Track {
 export interface Artist {
   id: string;
   name: string;
+  genre?: string;
   role: string;
   badge: string;
   genres: string[];
@@ -21,13 +22,22 @@ export interface Artist {
     communityMembers: string;
     reach: string;
   };
-  socials: {
+  socials?: {
+    instagram?: string;
+    youtube?: string;
+    spotify?: string;
+    x?: string;
+  };
+  socialLinks?: {
     instagram?: string;
     youtube?: string;
     spotify?: string;
     x?: string;
   };
   tracks: Track[];
+  isActive?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface EventScheduleItem {
@@ -54,12 +64,20 @@ export interface EventItem {
   type: string;
   image: string;
   featured: boolean;
+  isFeatured?: boolean;
   price: string;
+  ticketPrice?: number;
+  totalTickets?: number;
+  availableTickets?: number;
   capacity: number;
   registeredCount: number;
+  status?: string;
+  artist?: any;
   description: string;
   schedule: EventScheduleItem[];
   faqs: EventFaq[];
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface BlogComment {
@@ -100,9 +118,11 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  role: 'listener' | 'artist' | 'admin';
-  mfaEnabled: boolean;
+  role: 'user' | 'admin' | 'listener' | 'artist';
+  mfaEnabled?: boolean;
   avatar?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface Booking {

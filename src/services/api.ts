@@ -41,6 +41,38 @@ export async function fetchArtistById(id: string): Promise<Artist> {
   return data.artist;
 }
 
+export async function createArtist(payload: Partial<Artist> & { name: string; genre: string }): Promise<Artist> {
+  const res = await fetch('/api/artists', {
+    method: 'POST',
+    headers: getAuthHeaders(),
+    body: JSON.stringify(payload)
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Failed to create artist');
+  return data.artist;
+}
+
+export async function updateArtist(id: string, payload: Partial<Artist>): Promise<Artist> {
+  const res = await fetch(`/api/artists/${id}`, {
+    method: 'PUT',
+    headers: getAuthHeaders(),
+    body: JSON.stringify(payload)
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Failed to update artist');
+  return data.artist;
+}
+
+export async function deleteArtist(id: string): Promise<{ message: string; id: string }> {
+  const res = await fetch(`/api/artists/${id}`, {
+    method: 'DELETE',
+    headers: getAuthHeaders()
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Failed to delete artist');
+  return data;
+}
+
 export async function bookArtist(artistId: string, payload: {
   clientName: string;
   email: string;
@@ -76,6 +108,38 @@ export async function fetchEventById(id: string): Promise<EventItem> {
   if (!res.ok) throw new Error('Event not found');
   const data = await res.json();
   return data.event;
+}
+
+export async function createEvent(payload: Partial<EventItem> & { title: string; date: string; location: string; category: string }): Promise<EventItem> {
+  const res = await fetch('/api/events', {
+    method: 'POST',
+    headers: getAuthHeaders(),
+    body: JSON.stringify(payload)
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Failed to create event');
+  return data.event;
+}
+
+export async function updateEvent(id: string, payload: Partial<EventItem>): Promise<EventItem> {
+  const res = await fetch(`/api/events/${id}`, {
+    method: 'PUT',
+    headers: getAuthHeaders(),
+    body: JSON.stringify(payload)
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Failed to update event');
+  return data.event;
+}
+
+export async function deleteEvent(id: string): Promise<{ message: string; id: string }> {
+  const res = await fetch(`/api/events/${id}`, {
+    method: 'DELETE',
+    headers: getAuthHeaders()
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Failed to delete event');
+  return data;
 }
 
 export async function registerForEvent(eventId: string, payload: {

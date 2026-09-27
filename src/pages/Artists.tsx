@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, ArrowRight, Play, Sparkles } from 'lucide-react';
 import { Artist } from '../types';
+import { fetchArtists } from '../services/api';
 
 interface ArtistsProps {
   artists: Artist[];
@@ -11,7 +12,7 @@ interface ArtistsProps {
 }
 
 export const Artists: React.FC<ArtistsProps> = ({
-  artists,
+  artists: initialArtists = [],
   onSelectArtist,
   onNavigate,
   onPlayTrack
@@ -19,6 +20,35 @@ export const Artists: React.FC<ArtistsProps> = ({
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState('ALL');
   const [searchQuery, setSearchQuery] = useState('');
+  const [artistsList, setArtistsList] = useState<Artist[]>(initialArtists);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+    fetchArtists(activeCategory, searchQuery)
+      .then((data) => {
+        if (isMounted && Array.isArray(data)) {
+          setArtistsList(data);
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to fetch artists:', err);
+      })
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [activeCategory, searchQuery]);
+
+  useEffect(() => {
+    if (initialArtists.length > 0 && artistsList.length === 0) {
+      setArtistsList(initialArtists);
+    }
+  }, [initialArtists]);
 
   const categories = [
     'ALL',
@@ -42,17 +72,20 @@ export const Artists: React.FC<ArtistsProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const filteredArtists = artists.filter((artist) => {
+  const currentDisplayArtists = artistsList.length > 0 ? artistsList : initialArtists;
+  const filteredArtists = currentDisplayArtists.filter((artist) => {
     const matchesCategory =
       activeCategory === 'ALL' ||
-      artist.category.toUpperCase() === activeCategory ||
-      artist.genres.some((g) => g.toUpperCase() === activeCategory);
+      (artist.category && artist.category.toUpperCase() === activeCategory) ||
+      (artist.genre && artist.genre.toUpperCase() === activeCategory) ||
+      (Array.isArray(artist.genres) && artist.genres.some((g) => g.toUpperCase() === activeCategory));
 
     const matchesSearch =
       searchQuery === '' ||
       artist.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      artist.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      artist.location.toLowerCase().includes(searchQuery.toLowerCase());
+      (artist.role && artist.role.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (artist.location && artist.location.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (artist.genre && artist.genre.toLowerCase().includes(searchQuery.toLowerCase()));
 
     return matchesCategory && matchesSearch;
   });

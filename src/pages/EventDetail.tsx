@@ -22,17 +22,19 @@ export const EventDetail: React.FC<EventDetailProps> = ({
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    if (propEvent) {
-      setCurrentEvent(propEvent);
-      return;
-    }
     if (id) {
       const found = events.find(e => e.id === id);
-      if (found) {
-        setCurrentEvent(found);
-      } else {
-        fetchEventById(id).then(setCurrentEvent).catch(console.error);
-      }
+      if (found) setCurrentEvent(found);
+
+      fetchEventById(id)
+        .then((fetched) => {
+          if (fetched) setCurrentEvent(fetched);
+        })
+        .catch((err) => {
+          console.error('Failed to load event details from /api/events/:id:', err);
+        });
+    } else if (propEvent) {
+      setCurrentEvent(propEvent);
     }
   }, [id, propEvent, events]);
 

@@ -26,17 +26,19 @@ export const ArtistDetail: React.FC<ArtistDetailProps> = ({
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    if (propArtist) {
-      setCurrentArtist(propArtist);
-      return;
-    }
     if (id) {
       const found = artists.find(a => a.id === id);
-      if (found) {
-        setCurrentArtist(found);
-      } else {
-        fetchArtistById(id).then(setCurrentArtist).catch(console.error);
-      }
+      if (found) setCurrentArtist(found);
+
+      fetchArtistById(id)
+        .then((fetched) => {
+          if (fetched) setCurrentArtist(fetched);
+        })
+        .catch((err) => {
+          console.error('Failed to load artist from /api/artists/:id:', err);
+        });
+    } else if (propArtist) {
+      setCurrentArtist(propArtist);
     }
   }, [id, propArtist, artists]);
 
